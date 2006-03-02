@@ -5,7 +5,7 @@
 Summary:	Fedora RPM Development Tools
 Name:		fedora-rpmdevtools
 Version:	1.5
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Development/Tools
 URL:		http://fedoraproject.org/wiki/fedora-rpmdevtools
@@ -25,18 +25,11 @@ Requires:	wget
 # Minimal RPM build requirements
 Requires:	bzip2
 Requires:	diffutils
-Requires:	gcc
-Requires:	gcc-c++
-Requires:	gzip
-Requires:	make
-Requires:	patch
-#Requires:	redhat-rpm-config
 Requires:	rpm-build
 Requires:	tar
 Requires:	unzip
 Provides:	%{name}-emacs = %{version}-%{release}
 Provides:	spectool = %{spectool_version}
-Obsoletes:	fedora-rpmdevtools-emacs < 0.1.9
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -132,5 +125,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/fedora
 %attr(755,root,root) %{_bindir}/fedora-*
 %attr(755,root,root) %{_bindir}/spectool
-%{_prefix}/lib/rpm/check-*
+%attr(755,root,root) %{_prefix}/lib/rpm/check-*
 %ghost %{_datadir}/*emacs
