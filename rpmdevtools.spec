@@ -17,9 +17,9 @@ Source1:	http://people.redhat.com/nphilipp/spectool/spectool-%{spectool_version}
 # Required for tool operations
 Requires:	cpio
 Requires:	file
-Requires:	perl
+Requires:	perl-base
 Requires:	python
-Requires:	rpm-python
+Requires:	python-rpm
 Requires:	sed
 Requires:	wget
 # Minimal RPM build requirements
@@ -108,7 +108,7 @@ env PATH="$RPM_BUILD_ROOT%{_bindir}:$PATH" sh test/fedora-kmodhelper-test.sh
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-# i don't use emacs. #' -for vim
+# i don't use emacs, so dunno to check
 %if 0
 %triggerin -- emacs-common
 [ -d %{emacs_sitestart_d} ] && \
