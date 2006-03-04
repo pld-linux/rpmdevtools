@@ -3,17 +3,18 @@
 %define spectool_version   1.0.7
 
 Summary:	Fedora RPM Development Tools
+Summary(pl):	Narzêdzia do tworzenia RPM-ów Fedory
 Name:		fedora-rpmdevtools
 Version:	1.5
 Release:	0.2
 License:	GPL
 Group:		Development/Tools
-URL:		http://fedoraproject.org/wiki/fedora-rpmdevtools
 # rpminfo upstream: http://people.redhat.com/twoerner/rpminfo/bin/
 Source0:	%{name}-%{version}.tar.bz2
 # Source0-md5:	8b9e391f9da90a78ccb62db05e961bc3
 Source1:	http://people.redhat.com/nphilipp/spectool/spectool-%{spectool_version}.tar.bz2
 # Source1-md5:	e2b1668f39c085807cae5a770c252dd5
+URL:		http://fedoraproject.org/wiki/fedora-rpmdevtools
 # Required for tool operations
 Requires:	cpio
 Requires:	file
@@ -52,6 +53,25 @@ fedora-diffarchive      Diff contents of two archives
 fedora-wipebuildtree    Erase all files within dirs created by buildrpmtree
 spectool                Expand and download sources and patches in specfiles
 
+%description -l pl
+Ten pakiet zawiera skrypty i pliki pomocnicze (X)Emacsa pomocne przy
+tworzeniu pakietów RPM Fedory. Narzêdzia te s± zaprojektowane dla
+Fedory Core 2 i nowszych.
+
+fedora-buildrpmtree     Tworzy drzewo budowania RPM w katalogu domowym
+fedora-installdevkeys   Instaluje klucze GPG w osobnym keyringu RPM-a
+fedora-kmodhelper       Pomocniczy skrypt do budowania RPM-ów z modu³ami j±dra
+fedora-md5              Wy¶wietla sumê md5 wszystkich plików w pakiecie RPM
+fedora-newrpmspec       Tworzy nowy plik .spec z szablonu
+fedora-rmdevelrpms      Znajduje (i opcjonalnie usuwa) pakiety RPM *-devel
+fedora-rpmchecksig      Sprawdza podpisy pakietów przy u¿yciu osobnego keyringu RPM
+fedora-rpminfo          Wypisuje informacje o plikach wykonywalnych i bibliotekach
+fedora-rpmvercmp        Narzêdzie do porównywania wersji RPM-ów
+fedora-extract          Rozpakowuje ró¿ne archiwa podobnie do "tar xvf"
+fedora-diffarchive      Porównuje zawarto¶æ dwóch archiwów
+fedora-wipebuildtree    Usuwa wszystkie pliki z katalogów tworzonych przez buildrpmtree
+spectool                Odczytuje i pobiera ¼ród³a i ³aty z pliku spec
+
 %prep
 %setup -q -a 1
 cp -p spectool*/README README.spectool
@@ -76,19 +96,19 @@ install -pm 755 spectool*/spectool     $RPM_BUILD_ROOT%{_bindir}
 
 install -dm 755 $RPM_BUILD_ROOT%{_prefix}/lib/rpm
 install -pm 755 check-buildroot check-rpaths* \
-  $RPM_BUILD_ROOT%{_prefix}/lib/rpm
+	$RPM_BUILD_ROOT%{_prefix}/lib/rpm
 
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/fedora/devgpgkeys
 install -pm 644 spectemplate*.spec template.init \
-  $RPM_BUILD_ROOT%{_datadir}/fedora
+	$RPM_BUILD_ROOT%{_datadir}/fedora
 install -pm 644 devgpgkeys/* $RPM_BUILD_ROOT%{_datadir}/fedora/devgpgkeys
 
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/fedora/emacs
 install -pm 644 emacs/fedora-init.el $RPM_BUILD_ROOT%{_datadir}/fedora/emacs
 for dir in %{emacs_sitestart_d} %{xemacs_sitestart_d} ; do
-  install -dm 755 $RPM_BUILD_ROOT$dir
-  ln -s %{_datadir}/fedora/emacs/fedora-init.el $RPM_BUILD_ROOT$dir
-  touch $RPM_BUILD_ROOT$dir/fedora-init.elc
+	install -dm 755 $RPM_BUILD_ROOT$dir
+	ln -s %{_datadir}/fedora/emacs/fedora-init.el $RPM_BUILD_ROOT$dir
+	touch $RPM_BUILD_ROOT$dir/fedora-init.elc
 done
 
 install -dm 755 $RPM_BUILD_ROOT%{_sysconfdir}/fedora
@@ -121,9 +141,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README*
-%config(noreplace) %{_sysconfdir}/fedora
+%dir %{_sysconfdir}/fedora
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedora/rmdevelrpms.conf
 %{_datadir}/fedora
 %attr(755,root,root) %{_bindir}/fedora-*
 %attr(755,root,root) %{_bindir}/spectool
 %attr(755,root,root) %{_prefix}/lib/rpm/check-*
-%ghost %{_datadir}/*emacs
+%ghost %{emacs_sitestart_d}/fedora*.el*
+%ghost %{xemacs_sitestart_d}/fedora*.el*
