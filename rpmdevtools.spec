@@ -1,6 +1,6 @@
-%define emacs_sitestart_d  %{_datadir}/emacs/site-lisp/site-start.d
-%define xemacs_sitestart_d %{_datadir}/xemacs/site-packages/lisp/site-start.d
-%define spectool_version   1.0.7
+%define	emacs_sitestart_d	%{_datadir}/emacs/site-lisp/site-start.d
+%define	xemacs_sitestart_d	%{_datadir}/xemacs/site-packages/lisp/site-start.d
+%define	spectool_version	1.0.7
 
 Summary:	Fedora RPM Development Tools
 Summary(pl):	Narzêdzia do tworzenia RPM-ów Fedory
@@ -80,19 +80,19 @@ cp -p spectool*/README README.spectool
 rm -rf $RPM_BUILD_ROOT
 
 install -dm 755 $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-buildrpmtree    $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-installdevkeys  $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-kmodhelper      $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-md5             $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-newrpmspec      $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-rmdevelrpms     $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-rpmchecksig     $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 rpminfo                $RPM_BUILD_ROOT%{_bindir}/fedora-rpminfo
-install -pm 755 fedora-extract         $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-diffarchive     $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-rpmvercmp       $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 fedora-wipebuildtree   $RPM_BUILD_ROOT%{_bindir}
-install -pm 755 spectool*/spectool     $RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-buildrpmtree	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-installdevkeys	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-kmodhelper	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-md5		$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-newrpmspec	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-rmdevelrpms	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-rpmchecksig	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 rpminfo			$RPM_BUILD_ROOT%{_bindir}/fedora-rpminfo
+install -pm 755 fedora-extract		$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-diffarchive	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-rpmvercmp	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 fedora-wipebuildtree	$RPM_BUILD_ROOT%{_bindir}
+install -pm 755 spectool*/spectool	$RPM_BUILD_ROOT%{_bindir}
 
 install -dm 755 $RPM_BUILD_ROOT%{_prefix}/lib/rpm
 install -pm 755 check-buildroot check-rpaths* \
@@ -125,11 +125,11 @@ rm -rf $RPM_BUILD_ROOT
 %if 0
 %triggerin -- emacs-common
 [ -d %{emacs_sitestart_d} ] && \
-  ln -sf %{_datadir}/fedora/emacs/fedora-init.el %{emacs_sitestart_d} || :
+	ln -sf %{_datadir}/fedora/emacs/fedora-init.el %{emacs_sitestart_d} || :
 
 %triggerin -- xemacs-common
 [ -d %{xemacs_sitestart_d} ] && \
-  ln -sf %{_datadir}/fedora/emacs/fedora-init.el %{xemacs_sitestart_d} || :
+	ln -sf %{_datadir}/fedora/emacs/fedora-init.el %{xemacs_sitestart_d} || :
 
 %triggerun -- emacs-common
 [ $2 -eq 0 ] && rm -f %{emacs_sitestart_d}/fedora-init.el* || :
