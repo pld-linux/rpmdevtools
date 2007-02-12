@@ -3,7 +3,7 @@
 %define	spectool_version	1.0.7
 
 Summary:	Fedora RPM Development Tools
-Summary(pl):	Narzêdzia do tworzenia RPM-ów Fedory
+Summary(pl.UTF-8):   NarzÄ™dzia do tworzenia RPM-Ã³w Fedory
 Name:		fedora-rpmdevtools
 Version:	1.5
 Release:	0.2
@@ -53,24 +53,24 @@ fedora-diffarchive      Diff contents of two archives
 fedora-wipebuildtree    Erase all files within dirs created by buildrpmtree
 spectool                Expand and download sources and patches in specfiles
 
-%description -l pl
+%description -l pl.UTF-8
 Ten pakiet zawiera skrypty i pliki pomocnicze (X)Emacsa pomocne przy
-tworzeniu pakietów RPM Fedory. Narzêdzia te s± zaprojektowane dla
+tworzeniu pakietÃ³w RPM Fedory. NarzÄ™dzia te sÄ… zaprojektowane dla
 Fedory Core 2 i nowszych.
 
 fedora-buildrpmtree     Tworzy drzewo budowania RPM w katalogu domowym
 fedora-installdevkeys   Instaluje klucze GPG w osobnym keyringu RPM-a
-fedora-kmodhelper       Pomocniczy skrypt do budowania RPM-ów z modu³ami j±dra
-fedora-md5              Wy¶wietla sumê md5 wszystkich plików w pakiecie RPM
+fedora-kmodhelper       Pomocniczy skrypt do budowania RPM-Ã³w z moduÅ‚ami jÄ…dra
+fedora-md5              WyÅ›wietla sumÄ™ md5 wszystkich plikÃ³w w pakiecie RPM
 fedora-newrpmspec       Tworzy nowy plik .spec z szablonu
 fedora-rmdevelrpms      Znajduje (i opcjonalnie usuwa) pakiety RPM *-devel
-fedora-rpmchecksig      Sprawdza podpisy pakietów przy u¿yciu osobnego keyringu RPM
+fedora-rpmchecksig      Sprawdza podpisy pakietÃ³w przy uÅ¼yciu osobnego keyringu RPM
 fedora-rpminfo          Wypisuje informacje o plikach wykonywalnych i bibliotekach
-fedora-rpmvercmp        Narzêdzie do porównywania wersji RPM-ów
-fedora-extract          Rozpakowuje ró¿ne archiwa podobnie do "tar xvf"
-fedora-diffarchive      Porównuje zawarto¶æ dwóch archiwów
-fedora-wipebuildtree    Usuwa wszystkie pliki z katalogów tworzonych przez buildrpmtree
-spectool                Odczytuje i pobiera ¼ród³a i ³aty z pliku spec
+fedora-rpmvercmp        NarzÄ™dzie do porÃ³wnywania wersji RPM-Ã³w
+fedora-extract          Rozpakowuje rÃ³Å¼ne archiwa podobnie do "tar xvf"
+fedora-diffarchive      PorÃ³wnuje zawartoÅ›Ä‡ dwÃ³ch archiwÃ³w
+fedora-wipebuildtree    Usuwa wszystkie pliki z katalogÃ³w tworzonych przez buildrpmtree
+spectool                Odczytuje i pobiera ÅºrÃ³dÅ‚a i Å‚aty z pliku spec
 
 %prep
 %setup -q -a 1
