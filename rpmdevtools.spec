@@ -3,7 +3,7 @@
 %define	spectool_version	1.0.7
 
 Summary:	Fedora RPM Development Tools
-Summary(pl.UTF-8):   Narzędzia do tworzenia RPM-ów Fedory
+Summary(pl.UTF-8):	Narzędzia do tworzenia RPM-ów Fedory
 Name:		fedora-rpmdevtools
 Version:	1.5
 Release:	0.2
