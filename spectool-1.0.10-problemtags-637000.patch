@@ -1,0 +1,14 @@
+https://bugzilla.redhat.com/637000
+
+diff -up spectool-1.0.10/spectool~ spectool-1.0.10/spectool
+--- spectool-1.0.10/spectool~	2008-02-12 12:32:21.000000000 +0200
++++ spectool-1.0.10/spectool	2010-09-27 19:17:31.483281717 +0300
+@@ -108,7 +108,7 @@ sub eval_sources_patches {
+ 				last;
+ 			}
+ 		}
+-		next if ($line =~ m/^\s*(BuildArch|Exclu(d|siv)e(Arch|OS))\s*:/i);
++		next if ($line =~ m/^\s*(BuildArch(itectures)?|Exclu(d|siv)e(Arch|OS)|Icon)\s*:/i);
+ 		$preamble .= $line;
+ 		if ($line !~ m/^\s*(?:source|patch)\d*\s*:/) {
+ 			print $tmpspec_fh $line;
