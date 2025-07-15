@@ -43,8 +43,8 @@ This package contains scripts to aid in development of RPM packages.
 %setup -q -a 1
 cp -p spectool-%{spectool_version}/README README.spectool
 cd spectool-%{spectool_version}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 cd ..
 
 %build
